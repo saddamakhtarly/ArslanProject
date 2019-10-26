@@ -62,7 +62,6 @@ namespace Employee.Models
             using (DbConfiguration db = new DbConfiguration())
             {
 
-                //var model = db.Employees.FirstOrDefault(x => x.Id == employee.Id);
                 var model = db.Employees.Remove(employee);
                 db.SaveChanges();
 
