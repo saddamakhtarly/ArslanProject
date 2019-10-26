@@ -10,7 +10,7 @@ namespace Employee.Models
     //Microsoft.EntityFrameworkCore.sqlServer
     public class DbConfiguration :DbContext
     {
-        DbSet<Employee1> Employees { get; set; }
+        public DbSet<Employee1> Employees { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

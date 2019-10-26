@@ -28,7 +28,7 @@ namespace Employee.Controllers
                 new DatabaseHandler().EmployeeMethod(em);
                 TempData["message"] = "Your data has been saved";
 
-                return RedirectToAction("Employee", "Employee", null);
+                return RedirectToAction("manage") ;
 
 
             }
@@ -38,7 +38,46 @@ namespace Employee.Controllers
                 throw;
             }
            
+           
 
         }
+        [HttpGet]
+        public IActionResult Manage()
+        {
+            var listofalldataindb = new DatabaseHandler().GetAllList();
+            return View(listofalldataindb);
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+
+           var getrowdata= new DatabaseHandler().GetRow(id);
+
+            return View(getrowdata);
+        }
+        [HttpPost]
+        public IActionResult Edit(Employee1 Em)
+        {
+
+            //var model = new DbConfiguration().Update(Em);
+            new DatabaseHandler().updateemp(Em);
+
+            TempData["Msg"] = "YOur record have been Updated";
+
+            return RedirectToAction("manage");
+        }
+        public IActionResult Delete(int id)
+        {
+
+            var getrowdata = new DatabaseHandler().GetRow(id);
+            new DatabaseHandler().Deleteemp(getrowdata);
+
+            TempData["Msgdd"] = "YOur record have been Deleted";
+
+            return RedirectToAction("manage");
+        }
     }
+
+
 }
