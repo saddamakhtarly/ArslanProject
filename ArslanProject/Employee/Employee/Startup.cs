@@ -46,7 +46,7 @@ namespace Employee
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Employee}/{action=Manage}/{id?}");
+                    pattern: "{controller=Address}/{action=Index}/{id?}");
             });
         }
     }

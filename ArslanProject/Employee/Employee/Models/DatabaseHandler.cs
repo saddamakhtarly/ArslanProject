@@ -62,7 +62,7 @@ namespace Employee.Models
             using (DbConfiguration db = new DbConfiguration())
             {
 
-                var model = db.Employees.Remove(employee);
+                 db.Employees.Remove(employee);
                 db.SaveChanges();
 
             }

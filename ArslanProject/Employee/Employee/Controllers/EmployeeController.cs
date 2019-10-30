@@ -17,7 +17,6 @@ namespace Employee.Controllers
         [HttpPost]
         public IActionResult Employee(Employee1 employees )
         {
-
             try
             {
                 Employee1 em = new Employee1();
@@ -27,19 +26,12 @@ namespace Employee.Controllers
                 em.Address = employees.Address;
                 new DatabaseHandler().EmployeeMethod(em);
                 TempData["message"] = "Your data has been saved";
-
                 return RedirectToAction("manage") ;
-
-
             }
             catch (Exception)
             {
-
                 throw;
             }
-           
-           
-
         }
         [HttpGet]
         public IActionResult Manage()
@@ -51,31 +43,24 @@ namespace Employee.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-
            var getrowdata= new DatabaseHandler().GetRow(id);
-
             return View(getrowdata);
         }
         [HttpPost]
         public IActionResult Edit(Employee1 Em)
         {
-
-            //var model = new DbConfiguration().Update(Em);
             new DatabaseHandler().updateemp(Em);
-
-            TempData["Msg"] = "YOur record have been Updated";
-
+            TempData["Msg"] = "Your record have been Updated";
             return RedirectToAction("manage");
         }
         public IActionResult Delete(int id)
         {
-
             var getrowdata = new DatabaseHandler().GetRow(id);
             new DatabaseHandler().Deleteemp(getrowdata);
-
-            TempData["Msgdd"] = "YOur record have been Deleted";
-
+            TempData["Msgdd"] = "Your record have been Deleted";
             return RedirectToAction("manage");
+
+
         }
     }
 
